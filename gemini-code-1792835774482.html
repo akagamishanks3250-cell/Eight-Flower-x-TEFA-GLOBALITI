@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eight Flower x TEFA GLOBALITI - Buket Pita Satin</title>
+    
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- QRCode JS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        /* ==============================================
+           1. DESAIN WARNA & ASET GLOBAL (Bisa Diubah)
+           ============================================== */
+        :root {
+            --primary-color: #d48b97;      /* Dusty Pink Elegant */
+            --secondary-color: #f7ebe8;    /* Cream Soft Background */
+            --accent-color: #8a9a86;       /* Sage Green Aksen Bunga */
+            --text-color: #4a3e3d;         /* Cokelat Tua Halus (Ganti Hitam) */
+            --card-bg: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hiasan Kelopak Bunga Berjatuhan */
+        .petal {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            color: var(--primary-color);
+            opacity: 0.6;
+            user-select: none;
+            pointer-events: none;
+            animation: fall 8s linear infinite;
+            z-index: 999;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* ==============================================
+           2. HEADER & HERO SECTION
+           ============================================== */
+        header {
+            background: linear-gradient(135deg, #fbe3e8 0%, #ecd5d8 100%);
+            text-align: center;
+            padding: 60px 20px 40px;
+            border-bottom: 3px double var(--primary-color);
+            position: relative;
+        }
+
+        .brand-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: #6b3e48;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #7d5c64;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ribbon-decoration {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* ==============================================
+           3. SECTION MENU UTAMA
+           ============================================== */
+        .section-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin: 40px 0 20px;
+            color: #5c353d;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "✿ ✿ ✿";
+            display: block;
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f1d6db;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(212, 139, 151, 0.2);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: #f7dcdb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #4a2e33;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #736265;
+            margin-bottom: 15px;
+        }
+
+        .btn-order {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-order:hover {
+            background-color: #be727f;
+        }
+
+        /* ==============================================
+           4. AKSESORIS TAMBAHAN
+           ============================================== */
+        .addons-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin-bottom: 50px;
+            border: 1px dashed var(--primary-color);
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .addon-item {
+            background: var(--secondary-color);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #524143;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .addon-item i {
+            color: var(--primary-color);
+        }
+
+        /* ==============================================
+           5. PEMBAYARAN & BARCODE SECTION
+           ============================================== */
+        .payment-qr-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .info-box i.main-icon {
+            font-size: 2.5rem;
+            color: #25D366; /* Warna WA */
+            margin-bottom: 15px;
+        }
+
+        .wa-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .wa-btn:hover {
+            background-color: #1eb956;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #e8d0d4;
+            color: #5c474a;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animasi Kelopak Bunga (Bisa Ditambah di JS) -->
+    <div id="petals-container"></div>
+
+    <!-- Header Section -->
+    <header>
+        <span class="brand-badge">Tugas Sekolah / Project TEFA</span>
+        <h1>Eight Flower x TEFA GLOBALITI</h1>
+        <p>Buket Pita Satin Handmade & Custom Premium — Cantik, Tahan Lama, & Penuh Makna 🌸</p>
+        <div class="ribbon-decoration">
+            <i class="fa-solid fa-ribbon"></i> ✿ <i class="fa-solid fa-heart"></i>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Section Menu Utama -->
+        <h2 class="section-title">Katalog Menu Buket</h2>
+        <div class="grid-container">
+
+            <!-- Card 1: Single Rose -->
+            <div class="card">
+                <div class="card-img"><i class="fa-solid fa-fan"></i></div>
+                <div class="card-body">
+                    <h3>Single Rose</h3>
+                    <p>Satu tangkai mawar pita satin elegan, cocok untuk hadiah simpel namun berkesan.</p>
+                    <a href="https://wa.me/62895394595426?text=Halo%20Eight%20Flower,%20saya%20mau%20pesan%20Single%20Rose" class="btn-order" target="_blank">Pesan via WA</a>
+                </div>
+            </div>
+
+            <!-- Card 2: Sweet Bloom -->
+            <div class="card">
+                <div class="card-img"><i class="fa-solid fa-seedling"></i></div>
+                <div class="card-body">
+                    <h3>Sweet Bloom</h3>
+                    <p>Rangkaian buket bunga sedang dengan nuansa warna manis dan lembut.</p>
+                    <a href="https://wa.me/62895394595426?text=Halo%20Eight%20Flower,%20saya%20mau%20pesan%20Sweet%20Bloom" class="btn-order" target="_blank">Pesan via WA</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Memory Bloom -->
+            <div class="card">
+                <div class="card-img"><i class="fa-solid fa-award"></i></div>
+                <div class="card-body">
+                    <h3>Memory Bloom</h3>
+                    <p>Desain istimewa untuk mengabadikan momen wisuda atau ulang tahun.</p>
+                    <a href="https://wa.me/62895394595426?text=Halo%20Eight%20Flower,%20saya%20mau%20pesan%20Memory%20Bloom" class="btn-order" target="_blank">Pesan via WA</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Ribbon Bloom -->
+            <div class="card">
+                <div class="card-img"><i class="fa-solid fa-ribbon"></i></div>
+                <div class="card-body">
+                    <h3>Ribbon Bloom</h3>
+                    <p>Kombinasi kelopak pita satin premium berpola unik dan mewah.</p>
+                    <a href="https://wa.me/62895394595426?text=Halo%20Eight%20Flower,%20saya%20mau%20pesan%20Ribbon%20Bloom" class="btn-order" target="_blank">Pesan via WA</a>
+                </div>
+            </div>
+
+            <!-- Card 5: Bloom Box -->
+            <div class="card">
+                <div class="card-img"><i class="fa-solid fa-box-tissue"></i></div>
+                <div class="card-body">
+                    <h3>Bloom Box</h3>
+                    <p>Rangkaian bunga pita satin yang disusun rapi di dalam kotak eksklusif.</p>
+                    <a href="https://wa.me/62895394595426?text=Halo%20Eight%20Flower,%20saya%20mau%20pesan%20Bloom%20Box" class="btn-order" target="_blank">Pesan via WA</a>
+                </div>
+            </div>
+
+            <!-- Card 6: Custom Bloom -->
+            <div class="card">
+                <div class="card-img"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="card-body">
+                    <h3>Custom Bloom</h3>
+                    <p>Bebas tentukan jumlah bunga, warna pita, dan tema buket sesuai keinginanmu!</p>
+                    <a href="https://wa.me/62895394595426?text=Halo%20Eight%20Flower,%20saya%20mau%20diskusi%20Custom%20Bloom" class="btn-order" target="_blank">Pesan via WA</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section Aksesoris Tambahan -->
+        <div class="addons-section">
+            <h2 class="section-title" style="margin-top: 0;">Tambahan Aksesoris</h2>
+            <p style="text-align: center; color: #736265;">Lengkapi buket pilihanmu dengan aksesoris manis berikut:</p>
+            
+            <div class="addons-grid">
+                <div class="addon-item"><i class="fa-regular fa-envelope"></i> Kartu Ucapan</div>
+                <div class="addon-item"><i class="fa-regular fa-image"></i> Foto Kecil</div>
+                <div class="addon-item"><i class="fa-solid fa-cookie-bite"></i> Snack</div>
+                <div class="addon-item"><i class="fa-solid fa-ribbon"></i> Pita Tambahan</div>
+                <div class="addon-item"><i class="fa-solid fa-key"></i> Gantungan</div>
+                <div class="addon-item"><i class="fa-solid fa-paperclip"></i> Jepitan Lucu</div>
+                <div class="addon-item"><i class="fa-solid fa-spa"></i> Bunga Mini</div>
+                <div class="addon-item"><i class="fa-solid fa-gem"></i> Perhiasan</div>
+            </div>
+        </div>
+
+        <!-- Section Pembayaran & Barcode -->
+        <div class="payment-qr-container">
+            
+            <!-- Box Pembayaran WA -->
+            <div class="info-box">
+                <i class="fa-brands fa-whatsapp main-icon"></i>
+                <h3>Pemesanan & Pembayaran</h3>
+                <p style="font-size: 0.9rem; margin-top: 8px;">Pemesanan dan konfirmasi pembayaran dilakukan secara mudah langsung melalui WhatsApp kami.</p>
+                <p style="font-weight: 600; margin-top: 10px; color: #333;">Nomor WA: 0895-3945-95426</p>
+                <a href="https://wa.me/62895394595426" class="wa-btn" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp Sekarang
+                </a>
+            </div>
+
+            <!-- Box QR Code Barcode -->
+            <div class="info-box">
+                <i class="fa-solid fa-qrcode main-icon" style="color: var(--primary-color);"></i>
+                <h3>Barcode Situs Web</h3>
+                <p style="font-size: 0.85rem; color: #666;">Pindai (Scan) QR Code di bawah untuk membuka situs web ini di HP lain:</p>
+                
+                <!-- Elemen Tempat QR Code Muncul -->
+                <div id="qrcode"></div>
+                
+                <span style="font-size: 0.8rem; color: #999;">Eight Flower x TEFA GLOBALITI</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Eight Flower x TEFA GLOBALITI. Dibuat untuk Tugas Sekolah.</p>
+    </footer>
+
+    <!-- Script JavaScript untuk Animasi & QR Code -->
+    <script>
+        // 1. DYNAMIC QR CODE GENERATOR
+        // Secara otomatis membuat Barcode dari URL web saat ini
+        window.onload = function() {
+            var currentUrl = window.location.href;
+            new QRCode(document.getElementById("qrcode"), {
+                text: currentUrl,
+                width: 128,
+                height: 128,
+                colorDark : "#4a3e3d",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        };
+
+        // 2. ANIMASI KELOPAK BUNGA BERJATUHAN
+        function createPetal() {
+            const petalContainer = document.getElementById('petals-container');
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            // Variasi ikon kelopak/bunga
+            const icons = ['🌸', '🌺', '✨', '🍃'];
+            petal.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 5 + 's'; // 5 - 8 detik
+            petal.style.fontSize = Math.random() * 10 + 15 + 'px';
+            
+            petalContainer.appendChild(petal);
+            
+            setTimeout(() => {
+                petal.remove();
+            }, 8000);
+        }
+
+        // Jalankan animasi kelopak setiap 600ms
+        setInterval(createPetal, 600);
+    </script>
+</body>
+</html>
